@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    int moveSpeed = 500; // how fast the player moves
+    int moveSpeed = 5; // how fast the player moves
     float lookSpeedX = 6; // left/right mouse sensitivity
     float lookSpeedY = 3; // up/down mouse sensitivity
     int jumpForce = 50; // ammount of force applied to create a jump
