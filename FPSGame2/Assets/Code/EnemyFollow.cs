@@ -14,28 +14,38 @@ public class EnemyFollow : MonoBehaviour
     public float fireRate;
     private float currTime = 0f;
     private NavMeshAgent navMeshAgent;
+    private Animator anim;
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         float currentRange = Vector3.Distance(player.position, transform.position);
         if (aggroRange >= currentRange)
         {
             enemy.SetDestination(player.position);
+            anim.SetBool("Squat", false);
+            anim.SetFloat("Speed", 2f);
+            anim.SetBool("Aiming", false);
+
+            anim.SetTrigger("Attack");
         }
         if (currentRange <= navMeshAgent.stoppingDistance)
         {
-            if(currTime<=0f)
+            anim.SetBool("Squat", false);
+            anim.SetFloat("Speed", 0f);
+            anim.SetBool("Aiming", true);
+            /*if(currTime<=0f)
             {
                 Instantiate(projectile, spawnPoint.position, transform.rotation);
             }
-            currTime = 1f;
+            currTime = 1f;*/
         }
-        currTime = currTime - Time.deltaTime;
+        //currTime = currTime - Time.deltaTime;
     }
-}
+    }

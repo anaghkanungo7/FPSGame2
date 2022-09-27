@@ -23,7 +23,7 @@ public class EnemyProjectle : MonoBehaviour
         }
     }
 
-    private void OnCollissionEnter(Collision other)
+    void OnCollissionEnter(Collision other)
     {
         collided = true;
     }
