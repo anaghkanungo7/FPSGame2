@@ -39,7 +39,7 @@ public class EnemyShoot : MonoBehaviour
         newRightGun.transform.parent = rightGunBone;
         newRightGun.transform.localPosition = Vector3.zero;
         newRightGun.transform.localRotation = Quaternion.Euler(90, 0, 0);
-        scaleChange = Vector3.Scale(new Vector3(6, 6, 6), newRightGun.transform.localScale);
+        scaleChange = Vector3.Scale(new Vector3(1, 1, 1), newRightGun.transform.localScale);
         newRightGun.transform.localScale = scaleChange;
         anim.runtimeAnimatorController = controller;
     }
