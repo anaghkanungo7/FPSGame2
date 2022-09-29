@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class ClassPlayerController : MonoBehaviour
 {
     int moveSpeed = 5; // how fast the player moves
     float lookSpeedX = 6; // left/right mouse sensitivity
