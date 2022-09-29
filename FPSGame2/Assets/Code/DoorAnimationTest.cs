@@ -25,7 +25,7 @@ public class DoorAnimationTest : MonoBehaviour
        
     }
 
-    private void OnTriggerStay(Collider other) {
+        private void OnTriggerStay(Collider other) {
         print("staying in area...");
         if (Input.GetKeyDown(KeyCode.E)) {
           anim.Play("door_1_open");

@@ -82,14 +82,7 @@ public class ProjectileGunTutorial : MonoBehaviour
         //check if ray hits something
         Vector3 targetPoint;
         if (Physics.Raycast(ray, out hit))
-        {
             targetPoint = hit.point;
-            if (hit.collider.CompareTag("Enemy"))
-            {
-                //rayHit.collider.GetComponent<ShootingAi>().TakeDamage(damage);
-                print("hit");
-            }
-        }
         else
             targetPoint = ray.GetPoint(75); //Just a point far away from the player
 

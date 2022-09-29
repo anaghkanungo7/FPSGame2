@@ -68,7 +68,7 @@ public class GunSystem : MonoBehaviour
 
 
             // Damage
-            if (rayHit.collider.CompareTag("Enemy")) { print("hit"); }
+            if (rayHit.collider.CompareTag("Enemy")) { print("hit"); 
                 // rayHit.collider.GetComponent<ShootingAi>().TakeDamage(damage);
         }
 
