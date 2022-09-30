@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyShoot : MonoBehaviour
 {
     public float health = 100;
+    private float healthShouldBe = 100;
     //related to movement
     public float aggroRange;
     public NavMeshAgent enemy;
@@ -26,12 +27,16 @@ public class EnemyShoot : MonoBehaviour
     private float currTime = 0f;
     private float animWait = 0f;
     private bool animTrigger = false;
+    private AudioSource aud;
+    private ClassPlayerController playerInfo;
+    private bool gavePoint = false;
 
 
 
     void Start()
     {
-
+        playerInfo = FindObjectOfType<ClassPlayerController>();
+        aud = GetComponent<AudioSource>();
         //Set up navmesh and animator
         navMeshAgent = GetComponent<NavMeshAgent>();
         anim = gameObject.GetComponent<Animator>();
@@ -39,7 +44,7 @@ public class EnemyShoot : MonoBehaviour
         newRightGun.transform.parent = rightGunBone;
         newRightGun.transform.localPosition = Vector3.zero;
         newRightGun.transform.localRotation = Quaternion.Euler(90, 0, 0);
-        scaleChange = Vector3.Scale(new Vector3(1, 1, 1), newRightGun.transform.localScale);
+        scaleChange = Vector3.Scale(new Vector3(3, 3, 3), newRightGun.transform.localScale);
         newRightGun.transform.localScale = scaleChange;
         anim.runtimeAnimatorController = controller;
     }
@@ -50,16 +55,35 @@ public class EnemyShoot : MonoBehaviour
         if (health <= 0)
         {
             anim.SetTrigger("Death");
+            if (gavePoint == false)
+            {
+                playerInfo.enemyCount += 1;
+                gavePoint = true;
+            }
             Destroy(gameObject, 5);
             return;
         }
-        if (Input.GetButtonDown("Jump"))
+        if (healthShouldBe != health)
         {
-            health = 0;
+            healthShouldBe = health;
+            anim.SetInteger("DamageID", 1);
+            anim.SetTrigger("Damage");
         }
-        if (animWait == 300 && animTrigger == true)
+        if (animWait == 120 && animTrigger == true)
         {
-            Instantiate(projectile, spawnPoint.position + (transform.forward * 2) + (transform.up * 4), transform.rotation);
+            Instantiate(projectile, spawnPoint.position + (transform.forward * 1) + (transform.up * 2), transform.rotation);
+            Instantiate(projectile, spawnPoint.position + (transform.forward * 1) + (transform.up * 1), transform.rotation);
+            Instantiate(projectile, spawnPoint.position + (transform.forward * 1) + (transform.up * 3), transform.rotation);
+            Instantiate(projectile, spawnPoint.position + (transform.forward * 1) + (transform.up * 2) + (transform.right * 1), transform.rotation);
+            Instantiate(projectile, spawnPoint.position + (transform.forward * 1) + (transform.up * 1) + (transform.right * 1), transform.rotation);
+            Instantiate(projectile, spawnPoint.position + (transform.forward * 1) + (transform.up * 3) + (transform.right * 1), transform.rotation);
+            Instantiate(projectile, spawnPoint.position + (transform.forward * 1) + (transform.up * 2) + (transform.right * -1), transform.rotation);
+            Instantiate(projectile, spawnPoint.position + (transform.forward * 1) + (transform.up * 1) + (transform.right * -1), transform.rotation);
+            Instantiate(projectile, spawnPoint.position + (transform.forward * 1) + (transform.up * 3) + (transform.right * -1), transform.rotation);
+            if (aud != null)
+            {
+                aud.Play();
+            }
             animWait = 0;
             animTrigger = false;
         }
@@ -75,23 +99,24 @@ public class EnemyShoot : MonoBehaviour
             anim.SetBool("Squat", false);
             anim.SetFloat("Speed", 0f);
             anim.SetBool("Aiming", true);
-            if (currTime <= 0f)
+            enemy.SetDestination(player.position);
+            if (animWait == 0)
             {
                 anim.SetTrigger("Attack");
                 animTrigger = true;
             }
-            currTime = 1f;
         }
         else if (aggroRange >= currentRange)
         {
             enemy.SetDestination(player.position);
+            anim.SetBool("Squat", false);
+            anim.SetFloat("Speed", 2f);
+            anim.SetBool("Aiming", false);
         }
         else
         {
             anim.SetBool("Aiming", false);
             anim.SetFloat("Speed", 0f);
         }
-
-        currTime -= Time.deltaTime;
     }
 }
