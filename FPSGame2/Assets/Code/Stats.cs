@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
-    private float enemyCount = 0f;
-    private float collectablesFound = 0f;
-    public float collectablesGoal = 10f;
-    public float enemyGoal = 10f;
-    public float playerHealth = 100f;
-    // Start is called before the first frame update
+    public int enemyCount = 0;
+    public int collectablesFound = 0;
+    public int collectablesGoal = 10;
+    public int enemyGoal = 10;
+
     void Start()
     {
         
