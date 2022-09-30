@@ -7760,8 +7760,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c6276b63956c9439d917f842b9eeb0, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!1 &218499369
 GameObject:
   m_ObjectHideFlags: 0
@@ -7897,7 +7895,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218499369}
   m_CullTransparentMesh: 1
->>>>>>> anagh-backup-2
 --- !u!1001 &221949788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11616,13 +11613,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-=======
     - target: {fileID: 5429468263180365015, guid: 8dff0ec31f9714d428b67befd16237de, type: 3}
       propertyPath: health
       value: 200
       objectReference: {fileID: 0}
->>>>>>> anagh-backup-2
     - target: {fileID: 5709430031135150952, guid: 8dff0ec31f9714d428b67befd16237de, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -16810,13 +16804,10 @@ RectTransform:
   - {fileID: 1975522018}
   - {fileID: 2094321042}
   - {fileID: 930046261}
-<<<<<<< HEAD
-=======
   - {fileID: 1664116915}
   - {fileID: 1050793506}
   - {fileID: 933604899}
   - {fileID: 218499370}
->>>>>>> anagh-backup-2
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
