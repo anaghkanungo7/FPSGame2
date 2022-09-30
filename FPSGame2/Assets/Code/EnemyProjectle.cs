@@ -20,7 +20,4 @@ public class EnemyProjectle : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 
-    private void OnTriggerEnter(Collider other) {
-        
-    }
 }
