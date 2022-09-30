@@ -19,6 +19,7 @@ public class GunSystem : MonoBehaviour
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
     EnemyFollow enemyScript = null;
+    EnemyShoot bossScript = null;
 
     //Graphics
     public GameObject muzzleFlash, bulletHoleGraphic;
@@ -81,6 +82,8 @@ public class GunSystem : MonoBehaviour
             if (rayHit.collider.CompareTag("Enemy")) {
                 enemyScript = rayHit.collider.GetComponent<EnemyFollow>();
                 enemyScript.health -= 10;
+                bossScript = rayHit.collider.GetComponent<EnemyShoot>();
+                bossScript.health -= 10;
                 print("hit"); 
             } 
                 // rayHit.collider.GetComponent<ShootingAi>().TakeDamage(damage);
