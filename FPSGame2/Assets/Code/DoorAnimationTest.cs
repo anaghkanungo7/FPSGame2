@@ -19,19 +19,19 @@ public class DoorAnimationTest : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        print("Player entered door area");
-        print(other);
+        //print("Player entered door area");
+        //print(other);
 
        
     }
 
         private void OnTriggerStay(Collider other) {
-        print("staying in area...");
+        //print("staying in area...");
         if (Input.GetKeyDown(KeyCode.E)) {
           anim.Play("door_1_open");
         }
         else {
-        print("Key not down");
+        //print("Key not down");
         }
     }
 }
