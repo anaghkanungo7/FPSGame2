@@ -83,9 +83,14 @@ public class GunSystem : MonoBehaviour
                 enemyScript = rayHit.collider.GetComponent<EnemyFollow>();
                 enemyScript.health -= 10;
                 bossScript = rayHit.collider.GetComponent<EnemyShoot>();
-                bossScript.health -= 10;
+                if (bossScript != null) {
+                    bossScript.health -= 10;
+                }
+                
                 print("hit"); 
             } 
+            
+            
                 // rayHit.collider.GetComponent<ShootingAi>().TakeDamage(damage);
         }
 
