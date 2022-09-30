@@ -27,6 +27,8 @@ public class EnemyFollow : MonoBehaviour
     private float currTime = 0f;
     private float animWait = 0f;
     private bool animTrigger = false;
+
+    private Stats playerStats;
     
     
 
@@ -43,6 +45,13 @@ public class EnemyFollow : MonoBehaviour
         scaleChange = Vector3.Scale(new Vector3(3, 3, 3), newRightGun.transform.localScale);
         newRightGun.transform.localScale = scaleChange;
         anim.runtimeAnimatorController = controller;
+
+
+        // keeping track of and incrementing kill count
+        playerStats = FindObjectOfType<Stats>();
+
+
+
     }
 
     // Update is called once per frame
@@ -51,6 +60,7 @@ public class EnemyFollow : MonoBehaviour
         if (health <= 0)
         {
             anim.SetTrigger("Death");
+            playerStats.enemyCount++;
             Destroy(gameObject, 5);
             return;
         }
