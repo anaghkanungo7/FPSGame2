@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyFollow : MonoBehaviour
 {
     public float health = 100;
+    private float healthShouldBe = 100;
     //related to movement
     public float aggroRange;
     public NavMeshAgent enemy;
@@ -53,13 +54,15 @@ public class EnemyFollow : MonoBehaviour
             Destroy(gameObject, 5);
             return;
         }
-        if(Input.GetButtonDown("Jump"))
+        if (healthShouldBe != health)
         {
-            health = 0;
+            healthShouldBe = health;
+            anim.SetInteger("DamageID", 1);
+            anim.SetTrigger("Damage");
         }
-        if (animWait == 300 && animTrigger == true)
+        if (animWait == 120 && animTrigger == true)
         {
-            Instantiate(projectile, spawnPoint.position + (transform.forward * 2) + (transform.up * 4), transform.rotation);
+            Instantiate(projectile, spawnPoint.position + (transform.forward * 2) + (transform.up * 2), transform.rotation);
             animWait = 0;
             animTrigger = false;
         } else if (animTrigger == true)
