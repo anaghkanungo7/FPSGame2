@@ -28,11 +28,14 @@ public class EnemyFollow : MonoBehaviour
     private float animWait = 0f;
     private bool animTrigger = false;
     private AudioSource aud;
+    private ClassPlayerController playerInfo;
+    private bool gavePoint = false;
 
 
 
     void Start()
     {
+        playerInfo = FindObjectOfType<ClassPlayerController>();
         aud = GetComponent<AudioSource>();
         //Set up navmesh and animator
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -52,6 +55,11 @@ public class EnemyFollow : MonoBehaviour
         if (health <= 0)
         {
             anim.SetTrigger("Death");
+            if (gavePoint == false)
+            {
+                playerInfo.enemyCount += 1;
+                gavePoint = true;
+            }
             Destroy(gameObject, 5);
             return;
         }

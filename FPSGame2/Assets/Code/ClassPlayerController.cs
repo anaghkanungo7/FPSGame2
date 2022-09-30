@@ -45,6 +45,7 @@ public class ClassPlayerController : MonoBehaviour
     public Transform feetTrans; //Position of where the players feet touch the ground
     float groundCheckDist = .5f; //How far down to check for the ground. The radius of Physics.CheckSphere
     public bool grounded = false; //Is the player on the ground
+    private AudioSource aud;
 
     void Start()
     {
@@ -52,6 +53,7 @@ public class ClassPlayerController : MonoBehaviour
         lookSpeedX *= .65f; //WebGL has a bug where the mouse has higher sensitibity. This compensates for the change. 
         lookSpeedY *= .65f; //.65 is a rough guess based on testing in firefox.
 #endif
+        aud = GetComponent<AudioSource>();
         _rigidbody = GetComponent<Rigidbody>(); // Using GetComponent is expensive. Always do it in start and chache it when you can.
         Cursor.lockState = CursorLockMode.Locked; // Hides the mouse and locks it to the center of the screen.
     }
@@ -112,6 +114,7 @@ public class ClassPlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Collectable")
         {
+            aud.Play();
             collectablesFound++;
         }
     }

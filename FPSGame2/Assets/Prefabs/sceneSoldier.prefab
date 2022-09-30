@@ -16,6 +16,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5274873564437555830, guid: bea900e38b90f3f43ba97b42ad4305c7, type: 3}
+      propertyPath: m_Height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5274873564437555830, guid: bea900e38b90f3f43ba97b42ad4305c7, type: 3}
       propertyPath: m_StoppingDistance
       value: 7
       objectReference: {fileID: 0}
