@@ -17,9 +17,5 @@ public class EnemyProjectle : MonoBehaviour
     {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
-    void OnCollisionEnter(Collision other)
-    {
-        Destroy(gameObject);
-    }
 
 }

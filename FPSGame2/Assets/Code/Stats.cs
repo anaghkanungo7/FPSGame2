@@ -9,11 +9,10 @@ public class Stats : MonoBehaviour
     public float collectablesGoal = 10f;
     public float enemyGoal = 10f;
     public float playerHealth = 100f;
-    private AudioSource aud;
     // Start is called before the first frame update
     void Start()
     {
-        aud = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
@@ -26,7 +25,6 @@ public class Stats : MonoBehaviour
     {
         if (other.gameObject.tag == "Collectable")
         {
-            aud.Play();
             collectablesFound++;
         }
     }

@@ -27,13 +27,12 @@ public class EnemyFollow : MonoBehaviour
     private float currTime = 0f;
     private float animWait = 0f;
     private bool animTrigger = false;
-    private AudioSource aud;
     
     
 
     void Start()
     {
-        aud = GetComponent<AudioSource>();
+
         //Set up navmesh and animator
         navMeshAgent = GetComponent<NavMeshAgent>();
         anim = gameObject.GetComponent<Animator>();
@@ -63,11 +62,7 @@ public class EnemyFollow : MonoBehaviour
         }
         if (animWait == 120 && animTrigger == true)
         {
-            Instantiate(projectile, spawnPoint.position + (transform.forward * 1) + (transform.up * 2), transform.rotation);
-            if (aud != null)
-            {
-                aud.Play();
-            }
+            Instantiate(projectile, spawnPoint.position + (transform.forward * 2) + (transform.up * 2), transform.rotation);
             animWait = 0;
             animTrigger = false;
         } else if (animTrigger == true)
@@ -82,12 +77,12 @@ public class EnemyFollow : MonoBehaviour
             anim.SetBool("Squat", false);
             anim.SetFloat("Speed", 0f);
             anim.SetBool("Aiming", true);
-            enemy.SetDestination(player.position);
-            if (animWait == 0)
+            if(currTime<=0f)
             {
                 anim.SetTrigger("Attack");
                 animTrigger = true;
             }
+            currTime = 1f;
         }
         else if (aggroRange >= currentRange)
         {
@@ -100,5 +95,7 @@ public class EnemyFollow : MonoBehaviour
             anim.SetBool("Aiming", false);
             anim.SetFloat("Speed", 0f);
         }
+
+        currTime -= Time.deltaTime;
     }
     }
