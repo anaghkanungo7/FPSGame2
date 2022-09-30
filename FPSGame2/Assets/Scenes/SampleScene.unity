@@ -11333,6 +11333,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 738011040205655956, guid: 8dff0ec31f9714d428b67befd16237de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1682138275661627409, guid: 8dff0ec31f9714d428b67befd16237de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.477
@@ -13422,11 +13426,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &734625444 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 134812, guid: 3c81b162a1af44348b8994f7040514d4, type: 3}
+  m_PrefabInstance: {fileID: 1892171544}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &734625447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 449102, guid: 3c81b162a1af44348b8994f7040514d4, type: 3}
   m_PrefabInstance: {fileID: 1892171544}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &734625448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734625444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dea38db695de00649be92da13167ae7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+--- !u!65 &734625449
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734625444}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.618382, y: 3.022859, z: 3.0406208}
+  m_Center: {x: 0.21153343, y: -0.08504754, z: -0.3616743}
+--- !u!65 &734625450
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734625444}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.085841775, y: 0.31807214, z: 0.832286}
+  m_Center: {x: -0.005171597, y: 0.022800028, z: 0.27416432}
 --- !u!1 &735451414 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 174170, guid: ea798cfb4939d4441b95d1bd39d0767f, type: 3}

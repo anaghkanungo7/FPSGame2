@@ -22,7 +22,7 @@ public class DoorAnimationTest : MonoBehaviour
         
     }
 
-        private void OnTriggerStay(Collider other) {
+    private void OnTriggerStay(Collider other) {
         if (Input.GetKeyDown(KeyCode.E) && (other.CompareTag("Player"))) {
           anim.Play("door_1_open");
         }
