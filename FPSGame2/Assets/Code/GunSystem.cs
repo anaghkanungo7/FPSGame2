@@ -57,7 +57,7 @@ public class GunSystem : MonoBehaviour
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0){
             bulletsShot = bulletsPerTap;
             aud.clip = shootAud;
-            aud.Play();
+            aud.PlayOneShot(shootAud, 0.7f);
             Shoot();
         }
     }
