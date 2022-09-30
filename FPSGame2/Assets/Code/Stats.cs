@@ -1,30 +1,30 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-// public class Stats : MonoBehaviour
-// {
-//     private int enemyCount = 0f;
-//     private int collectablesFound = 0f;
-//     public int collectablesGoal = 10f;
-//     public int enemyGoal = 10f;
+public class Stats : MonoBehaviour
+{
+    public int enemyCount = 0;
+    public int collectablesFound = 0;
+    public int collectablesGoal = 10;
+    public int enemyGoal = 10;
 
-//     // void Start()
-//     // {
+    void Start()
+    {
         
-//     // }
+    }
 
-//     // // Update is called once per frame
-//     // void Update()
-//     // {
+    // Update is called once per frame
+    void Update()
+    {
         
-//     // }
+    }
 
-//     void OnCollisionEnter(Collision other)
-//     {
-//         if (other.gameObject.tag == "Collectable")
-//         {
-//             collectablesFound++;
-//         }
-//     }
-// }
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Collectable")
+        {
+            collectablesFound++;
+        }
+    }
+}
