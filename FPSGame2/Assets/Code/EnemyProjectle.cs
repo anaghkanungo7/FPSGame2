@@ -6,10 +6,12 @@ public class EnemyProjectle : MonoBehaviour
 {
     public float speed;
 
+    private ClassPlayerController player;
+
     // Start is called before the first frame update
     void Start()
     {
-       
+       player = FindObjectOfType<ClassPlayerController>();
     }
 
     // Update is called once per frame

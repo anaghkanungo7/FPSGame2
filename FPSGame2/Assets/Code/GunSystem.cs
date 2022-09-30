@@ -67,7 +67,6 @@ public class GunSystem : MonoBehaviour
         {
             Debug.Log(rayHit.collider.name);
 
-
             // Damage
             if (rayHit.collider.CompareTag("Enemy")) {
                 enemyScript = rayHit.collider.GetComponent<EnemyFollow>();
