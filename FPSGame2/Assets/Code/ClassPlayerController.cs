@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
+using TMPro;
+
+
 
 public class ClassPlayerController : MonoBehaviour
 {
@@ -8,6 +12,22 @@ public class ClassPlayerController : MonoBehaviour
     float lookSpeedX = 6; // left/right mouse sensitivity
     float lookSpeedY = 3; // up/down mouse sensitivity
     int jumpForce = 250; // ammount of force applied to create a jump
+
+    
+
+
+    // Enemy code 
+    public int enemyCount = 0;
+    public int collectablesFound = 0;
+    public int collectablesGoal = 10;
+    public int enemyGoal = 10;
+
+
+    // TextMeshes
+    
+    public TextMeshProUGUI gunObjectiveText;
+    public TextMeshProUGUI enemyObjectiveText;
+    public TextMeshProUGUI energyObjectiveText;
 
     public Transform camTrans; // a reference to the camera transform
     float xRotation;
@@ -46,6 +66,26 @@ public class ClassPlayerController : MonoBehaviour
 
     void Update()
     {
+        // Updating text
+        enemyObjectiveText.SetText("Kill " + enemyCount + "/" + enemyGoal + " enemies");
+        energyObjectiveText.SetText("Collect " + collectablesFound + "/" + collectablesGoal + " energy cells");
+
+        bool completedEnemy = (enemyCount == enemyGoal);
+        bool collectedEnergy = (collectablesFound == collectablesGoal);
+
+        if (completedEnemy)
+            enemyObjectiveText.fontStyle = FontStyles.Strikethrough;
+
+        if (collectedEnergy)
+            energyObjectiveText.fontStyle = FontStyles.Strikethrough;
+
+        if (completedEnemy && collectedEnergy)
+            SceneManager.LoadScene("Ending");
+
+
+        
+
+        
         yRotation += Input.GetAxis("Mouse X") * lookSpeedX;
         xRotation += Input.GetAxis("Mouse Y") * -1 * lookSpeedY; //inverted
         xRotation = Mathf.Clamp(xRotation, -90, 90); //Keeps up/down head rotation realistic
@@ -55,6 +95,15 @@ public class ClassPlayerController : MonoBehaviour
         if (grounded && Input.GetButtonDown("Jump")) //if the player is on the ground and press Spacebar
         {
             _rigidbody.AddForce(new Vector3(0, jumpForce, 0)); // Add a force jumpForce in the Y direction
+        }
+    }
+
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Collectable")
+        {
+            collectablesFound++;
         }
     }
 }

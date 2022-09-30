@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
+
 //This Script is intended for enemies who should be stationary until a player is nearby 
 public class EnemyFollow : MonoBehaviour
 {
@@ -28,9 +30,8 @@ public class EnemyFollow : MonoBehaviour
     private float animWait = 0f;
     private bool animTrigger = false;
 
-    private Stats playerStats;
-    
-    
+    private ClassPlayerController playerStats;
+
 
     void Start()
     {
@@ -48,8 +49,7 @@ public class EnemyFollow : MonoBehaviour
 
 
         // keeping track of and incrementing kill count
-        playerStats = FindObjectOfType<Stats>();
-
+        playerStats = FindObjectOfType<ClassPlayerController>();
 
 
     }
@@ -57,6 +57,7 @@ public class EnemyFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (health <= 0)
         {
             anim.SetTrigger("Death");
