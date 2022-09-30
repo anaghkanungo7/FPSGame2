@@ -11745,6 +11745,26 @@ PrefabInstance:
       propertyPath: health
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 5429468263180365015, guid: 8dff0ec31f9714d428b67befd16237de, type: 3}
+      propertyPath: enemyGoal
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5429468263180365015, guid: 8dff0ec31f9714d428b67befd16237de, type: 3}
+      propertyPath: collectablesGoal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5429468263180365015, guid: 8dff0ec31f9714d428b67befd16237de, type: 3}
+      propertyPath: gunObjectiveText
+      value: 
+      objectReference: {fileID: 1050793507}
+    - target: {fileID: 5429468263180365015, guid: 8dff0ec31f9714d428b67befd16237de, type: 3}
+      propertyPath: enemyObjectiveText
+      value: 
+      objectReference: {fileID: 933604900}
+    - target: {fileID: 5429468263180365015, guid: 8dff0ec31f9714d428b67befd16237de, type: 3}
+      propertyPath: energyObjectiveText
+      value: 
+      objectReference: {fileID: 218499371}
     - target: {fileID: 5709430031135150952, guid: 8dff0ec31f9714d428b67befd16237de, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
