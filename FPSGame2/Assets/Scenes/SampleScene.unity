@@ -26518,6 +26518,8 @@ GameObject:
   - component: {fileID: 1491864303}
   - component: {fileID: 1491864308}
   - component: {fileID: 1491864310}
+  - component: {fileID: 1491864312}
+  - component: {fileID: 1491864311}
   m_Layer: 15
   m_Name: Bullet
   m_TagString: Untagged
@@ -26633,6 +26635,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
+--- !u!114 &1491864311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491864302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a845ad100df15a469fe55c423ca4fef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &1491864312
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491864302}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1494861877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27114,20 +27141,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9669a0580b3f7fe4d9c5835ca935e49e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 10
   timeBetweenShooting: 0.05
-  spread: 0.02
-  range: 100
-  reloadTime: 0
+  spread: 0.01
+  range: 70
+  reloadTime: 2
   timeBetweenShots: 0
-  magazineSize: 30
+  magazineSize: 50
   bulletsPerTap: 1
   allowButtonHold: 1
   fpsCam: {fileID: 59570822}
   attackPoint: {fileID: 527904429}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 31
   muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
   bulletHoleGraphic: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
   text: {fileID: 1975522019}
@@ -27144,13 +27171,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1491864302}
-  shootForce: 300
+  shootForce: 200
   upwardForce: 0
   timeBetweenShooting: 0.1
   spread: 0
-  reloadTime: 1.5
+  reloadTime: 2
   timeBetweenShots: 0
-  magazineSize: 100
+  magazineSize: 30
   bulletsPerTap: 1
   allowButtonHold: 1
   playerRb: {fileID: 851291500}
