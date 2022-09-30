@@ -87,6 +87,10 @@ public class ClassPlayerController : MonoBehaviour
         if (completedEnemy && collectedEnergy)
             SceneManager.LoadScene("Ending");
 
+        if (health < 0) {
+            SceneManager.LoadScene("RetryPage");
+        }
+
 
         
 
