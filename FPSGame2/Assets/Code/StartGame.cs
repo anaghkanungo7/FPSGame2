@@ -16,6 +16,16 @@ public class StartGame : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
+    public void GameHome()
+    {
+        SceneManager.LoadScene("StartPage");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     // Update is called once per frame
     // void Update()
     // {
