@@ -27,7 +27,8 @@ public class EnemyProjectle : MonoBehaviour
         if (other.CompareTag("Player")) {
                 player.health -= 20;
                 print("player hit"); 
-        } 
+        }
+        Destroy(gameObject);
     }
 
 }

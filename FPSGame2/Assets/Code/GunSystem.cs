@@ -26,6 +26,13 @@ public class GunSystem : MonoBehaviour
     // public float camShakeMagnitude, camShakeDuration;
     public TextMeshProUGUI text;
 
+    private AudioSource aud;
+    public AudioClip reloadAud;
+    public AudioClip shootAud;
+    void Start()
+    {
+        aud = GetComponent<AudioSource>();
+    }
     private void Awake()
     {
         bulletsLeft = magazineSize;
@@ -48,6 +55,8 @@ public class GunSystem : MonoBehaviour
         //Shoot
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0){
             bulletsShot = bulletsPerTap;
+            aud.clip = shootAud;
+            aud.Play();
             Shoot();
         }
     }
@@ -104,6 +113,8 @@ public class GunSystem : MonoBehaviour
     private void ReloadFinished()
     {
         bulletsLeft = magazineSize;
+        aud.clip = reloadAud;
+        aud.Play();
         reloading = false;
     }
 }

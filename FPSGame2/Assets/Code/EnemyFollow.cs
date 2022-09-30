@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using TMPro;
-
 //This Script is intended for enemies who should be stationary until a player is nearby 
 public class EnemyFollow : MonoBehaviour
 {
@@ -29,15 +27,13 @@ public class EnemyFollow : MonoBehaviour
     private float currTime = 0f;
     private float animWait = 0f;
     private bool animTrigger = false;
+    private AudioSource aud;
 
-    private ClassPlayerController playerStats;
-
-    bool notUpdatedKillCount = true;
 
 
     void Start()
     {
-
+        aud = GetComponent<AudioSource>();
         //Set up navmesh and animator
         navMeshAgent = GetComponent<NavMeshAgent>();
         anim = gameObject.GetComponent<Animator>();
@@ -48,24 +44,14 @@ public class EnemyFollow : MonoBehaviour
         scaleChange = Vector3.Scale(new Vector3(3, 3, 3), newRightGun.transform.localScale);
         newRightGun.transform.localScale = scaleChange;
         anim.runtimeAnimatorController = controller;
-
-
-        // keeping track of and incrementing kill count
-        playerStats = FindObjectOfType<ClassPlayerController>();
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (health <= 0)
         {
             anim.SetTrigger("Death");
-            if (notUpdatedKillCount)
-                playerStats.enemyCount++;
-                notUpdatedKillCount = false;
             Destroy(gameObject, 5);
             return;
         }
@@ -77,27 +63,32 @@ public class EnemyFollow : MonoBehaviour
         }
         if (animWait == 120 && animTrigger == true)
         {
-            Instantiate(projectile, spawnPoint.position + (transform.forward * 2) + (transform.up * 2), transform.rotation);
+            Instantiate(projectile, spawnPoint.position + (transform.forward * 1) + (transform.up * 2), transform.rotation);
+            if (aud != null)
+            {
+                aud.Play();
+            }
             animWait = 0;
             animTrigger = false;
-        } else if (animTrigger == true)
+        }
+        else if (animTrigger == true)
         {
             animWait++;
         }
         float currentRange = Vector3.Distance(player.position, transform.position);
-       
+
         //if the player is within range, the enemy should shoot
         if (currentRange <= navMeshAgent.stoppingDistance)
         {
             anim.SetBool("Squat", false);
             anim.SetFloat("Speed", 0f);
             anim.SetBool("Aiming", true);
-            if(currTime<=0f)
+            enemy.SetDestination(player.position);
+            if (animWait == 0)
             {
                 anim.SetTrigger("Attack");
                 animTrigger = true;
             }
-            currTime = 1f;
         }
         else if (aggroRange >= currentRange)
         {
@@ -105,12 +96,11 @@ public class EnemyFollow : MonoBehaviour
             anim.SetBool("Squat", false);
             anim.SetFloat("Speed", 2f);
             anim.SetBool("Aiming", false);
-        } else
+        }
+        else
         {
             anim.SetBool("Aiming", false);
             anim.SetFloat("Speed", 0f);
         }
-
-        currTime -= Time.deltaTime;
     }
-    }
+}
