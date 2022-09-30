@@ -8,6 +8,11 @@ using TMPro;
 
 public class ClassPlayerController : MonoBehaviour
 {
+
+    public float health = 200f;
+
+
+
     int moveSpeed = 5; // how fast the player moves
     float lookSpeedX = 6; // left/right mouse sensitivity
     float lookSpeedY = 3; // up/down mouse sensitivity

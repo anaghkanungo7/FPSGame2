@@ -32,6 +32,8 @@ public class EnemyFollow : MonoBehaviour
 
     private ClassPlayerController playerStats;
 
+    bool notUpdatedKillCount = true;
+
 
     void Start()
     {
@@ -61,7 +63,9 @@ public class EnemyFollow : MonoBehaviour
         if (health <= 0)
         {
             anim.SetTrigger("Death");
-            playerStats.enemyCount++;
+            if (notUpdatedKillCount)
+                playerStats.enemyCount++;
+                notUpdatedKillCount = false;
             Destroy(gameObject, 5);
             return;
         }
